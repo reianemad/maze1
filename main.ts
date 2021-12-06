@@ -1,26 +1,13 @@
 namespace SpriteKind {
     export const bully = SpriteKind.create()
 }
+sprites.onCreated(SpriteKind.Enemy, function (sprite) {
+    game.showLongText("alice: ew ramona your outfit is so ugly", DialogLayout.Bottom)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, location) {
+	
+})
 scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileGrass2, function (sprite, location) {
-    mySprite2 = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . f f f f f f . . . . . 
-        . . . . f c c c c c c f . . . . 
-        . . . f c c c c c c c c f . . . 
-        . . . f c c f f f f c c f . . . 
-        . . . f c f f d d f f c f . . . 
-        . . f c f d f d d f d f c f . . 
-        . . f c f d c d d c d f c f . . 
-        . . f c c f d d d d f c c f . . 
-        . f c c f 6 f f f f 6 f c c f . 
-        . . f f d 6 5 6 6 5 6 d f f . . 
-        . . f d d f 6 5 5 6 f d d f . . 
-        . . . f f 6 6 6 6 6 6 f f . . . 
-        . . . f 6 6 5 6 6 5 6 6 f . . . 
-        . . . f f f f f f f f f f . . . 
-        . . . . . f f . . f f . . . . . 
-        `, SpriteKind.Enemy)
-    mySprite2.setPosition(13, 229)
     scene.setBackgroundImage(img`
         bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
         bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
@@ -145,11 +132,29 @@ scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileGrass2, function (spri
         `)
     tiles.setTilemap(tilemap`level7`)
     scene.centerCameraAt(x, y)
-    mySprite2.setStayInScreen(true)
+    mySprite2 = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . f f f f f f . . . . . 
+        . . . . f c c c c c c f . . . . 
+        . . . f c c c c c c c c f . . . 
+        . . . f c c f f f f c c f . . . 
+        . . . f c f f d d f f c f . . . 
+        . . f c f d f d d f d f c f . . 
+        . . f c f d c d d c d f c f . . 
+        . . f c c f d d d d f c c f . . 
+        . f c c f 6 f f f f 6 f c c f . 
+        . . f f d 6 5 6 6 5 6 d f f . . 
+        . . f d d f 6 5 5 6 f d d f . . 
+        . . . f f 6 6 6 6 6 6 f f . . . 
+        . . . f 6 6 5 6 6 5 6 6 f . . . 
+        . . . f f f f f f f f f f . . . 
+        . . . . . f f . . f f . . . . . 
+        `, SpriteKind.Enemy)
+    mySprite2.setPosition(13, 229)
 })
+let mySprite2: Sprite = null
 let y = 0
 let x = 0
-let mySprite2: Sprite = null
 game.showLongText("HEYYYYY so today we're gonna follow the story of alice, a reformed cyberbully.", DialogLayout.Full)
 game.showLongText("follow the orbs to learn more about cyberbullying and how it sucks ", DialogLayout.Full)
 let mySprite = sprites.create(img`
