@@ -20,10 +20,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileGrass2, function (spri
         . . . f f f f f f f f f f . . . 
         . . . . . f f . . f f . . . . . 
         `, SpriteKind.Enemy)
-    mySprite2.setPosition(38, 200)
-    scene.cameraFollowSprite(mySprite2)
-    controller.player2.moveSprite(mySprite2, 50, 50)
-    controller.moveSprite(mySprite)
+    mySprite2.setPosition(13, 229)
     scene.setBackgroundImage(img`
         bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
         bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
@@ -147,12 +144,15 @@ scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileGrass2, function (spri
         eeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeeddddd
         `)
     tiles.setTilemap(tilemap`level7`)
+    scene.centerCameraAt(x, y)
+    mySprite2.setStayInScreen(true)
 })
+let y = 0
+let x = 0
 let mySprite2: Sprite = null
-let mySprite: Sprite = null
 game.showLongText("HEYYYYY so today we're gonna follow the story of alice, a reformed cyberbully.", DialogLayout.Full)
 game.showLongText("follow the orbs to learn more about cyberbullying and how it sucks ", DialogLayout.Full)
-mySprite = sprites.create(img`
+let mySprite = sprites.create(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f e e f f f . . . . 
     . . . f f f e e e e f f f . . . 
@@ -175,6 +175,7 @@ controller.moveSprite(mySprite)
 tiles.setTilemap(tilemap`level1`)
 scene.cameraFollowSprite(mySprite)
 info.setScore(0)
-game.onUpdateInterval(500, function () {
-	
+forever(function () {
+    y = mySprite.y
+    x = mySprite.x
 })
