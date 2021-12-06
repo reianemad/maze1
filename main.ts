@@ -1,27 +1,29 @@
 namespace SpriteKind {
     export const bully = SpriteKind.create()
 }
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . f f f f f f . . . . 
-        . . . . f f e e e e e e f . . . 
-        . . . f f e e e e e e e e f . . 
-        . . . f e e e e e e e e e e f . 
-        . . . f e e e e e e e e e e f . 
-        . . . f e e e e f f f f e e f . 
-        . . f f f f f f f e e e f f f . 
-        . . f f e 4 4 e b f 4 4 e e f . 
-        . . f e e 4 d 4 1 f d d e f . . 
-        . . . f e e e e e d d d f . . . 
-        . . . . . f 4 d d e 4 e f . . . 
-        . . . . . f e d d e 2 2 f . . . 
-        . . . . f f f e e f 2 2 f f . . 
-        . . . . f f f f f f f f f f . . 
-        . . . . . f f . . . f f f . . . 
-        `, SpriteKind.Player)
-})
 scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileGrass2, function (sprite, location) {
+    mySprite2 = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . f f f f f f . . . . . 
+        . . . . f c c c c c c f . . . . 
+        . . . f c c c c c c c c f . . . 
+        . . . f c c f f f f c c f . . . 
+        . . . f c f f d d f f c f . . . 
+        . . f c f d f d d f d f c f . . 
+        . . f c f d c d d c d f c f . . 
+        . . f c c f d d d d f c c f . . 
+        . f c c f 6 f f f f 6 f c c f . 
+        . . f f d 6 5 6 6 5 6 d f f . . 
+        . . f d d f 6 5 5 6 f d d f . . 
+        . . . f f 6 6 6 6 6 6 f f . . . 
+        . . . f 6 6 5 6 6 5 6 6 f . . . 
+        . . . f f f f f f f f f f . . . 
+        . . . . . f f . . f f . . . . . 
+        `, SpriteKind.Enemy)
+    mySprite2.setPosition(38, 200)
+    scene.cameraFollowSprite(mySprite2)
+    controller.player2.moveSprite(mySprite2, 50, 50)
+    controller.moveSprite(mySprite)
     scene.setBackgroundImage(img`
         bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
         bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
@@ -144,8 +146,9 @@ scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileGrass2, function (spri
         eeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeeddddd
         eeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeedddddeeeeeddddd
         `)
-    tiles.setTilemap(tilemap`level5`)
+    tiles.setTilemap(tilemap`level7`)
 })
+let mySprite2: Sprite = null
 let mySprite: Sprite = null
 game.showLongText("HEYYYYY so today we're gonna follow the story of alice, a reformed cyberbully.", DialogLayout.Full)
 game.showLongText("follow the orbs to learn more about cyberbullying and how it sucks ", DialogLayout.Full)
@@ -172,3 +175,6 @@ controller.moveSprite(mySprite)
 tiles.setTilemap(tilemap`level1`)
 scene.cameraFollowSprite(mySprite)
 info.setScore(0)
+game.onUpdateInterval(500, function () {
+	
+})
