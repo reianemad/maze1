@@ -2,10 +2,14 @@ namespace SpriteKind {
     export const bully = SpriteKind.create()
 }
 sprites.onCreated(SpriteKind.Enemy, function (sprite) {
-    game.showLongText("alice: ew ramona your outfit is so ugly", DialogLayout.Bottom)
+	
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, location) {
 	
+})
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite2.sayText("ew ramona your outfit is so ugly", 5000, false)
+    sdaknasd = false
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileGrass2, function (sprite, location) {
     scene.setBackgroundImage(img`
@@ -150,13 +154,21 @@ scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileGrass2, function (spri
         . . . f f f f f f f f f f . . . 
         . . . . . f f . . f f . . . . . 
         `, SpriteKind.Enemy)
-    mySprite2.setPosition(13, 229)
+    mySprite2.setPosition(80, 229)
+    mySprite2.setStayInScreen(true)
 })
-let mySprite2: Sprite = null
+controller.B.onEvent(ControllerButtonEvent.Released, function () {
+    pause(1000)
+    mySprite2.sayText("smile!", 5000, false)
+    pause(5000)
+})
 let y = 0
 let x = 0
+let sdaknasd = false
+let mySprite2: Sprite = null
+music.smallCrash.play()
 game.showLongText("HEYYYYY so today we're gonna follow the story of alice, a reformed cyberbully.", DialogLayout.Full)
-game.showLongText("follow the orbs to learn more about cyberbullying and how it sucks ", DialogLayout.Full)
+game.showLongText("press the \"b\" button to talk to the people you see!", DialogLayout.Full)
 let mySprite = sprites.create(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f e e f f f . . . . 
